@@ -20,7 +20,7 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://my.api.mockaroo.com/movies.json?key=cb03b960")
+            .baseUrl("https://my.api.mockaroo.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()

@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface ApiClient {
 
-    @GET
+    @GET("movies.json?key=cb03b960")
     suspend fun getMoviesList(): Response<MoviesResponse>
 }
