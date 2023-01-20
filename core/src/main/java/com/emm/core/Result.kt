@@ -11,7 +11,7 @@ sealed class Result<out T> {
 }
 
 /**
- * Extensión para mapear los modelos entre la paca de dominio y data, según el resultado,
+ * Extensión para mapear los modelos entre la capa de dominio y data, según el resultado [Result],
  * de la consulta a la fuente de datos.
  */
 fun <T, X> Result<T>.mapper(mapper: (T) -> X): Result<X> {

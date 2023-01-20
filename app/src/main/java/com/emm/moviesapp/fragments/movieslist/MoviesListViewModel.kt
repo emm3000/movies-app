@@ -37,7 +37,12 @@ class MoviesListViewModel @Inject constructor(
     private fun handleGetMoviesListUseCase(result: Result<List<MovieModel>>) {
         when (result) {
             is Result.Error -> {
-                _viewState.update { it.copy(isLoading = false, errorMessage = result.error?.message) }
+                _viewState.update {
+                    it.copy(
+                        isLoading = false,
+                        errorMessage = result.error?.message
+                    )
+                }
             }
             is Result.Success -> {
                 val moviesList = result.data.map(movieUIMapper::mapMovieListDomainToUI)
