@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.emm.moviesapp.databinding.ItemMovieBinding
-import com.emm.moviesapp.model.MovieModel
+import com.emm.moviesapp.model.MovieUI
 
 class MovieItemAdapter(
-    private val onItemClick: (MovieModel) -> Unit
-) : ListAdapter<MovieModel, MovieItemAdapter.ViewHolder>(DIFF_CALLBACK) {
+    private val onItemClick: (MovieUI) -> Unit
+) : ListAdapter<MovieUI, MovieItemAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -26,18 +26,18 @@ class MovieItemAdapter(
     inner class ViewHolder(
         private val binding: ItemMovieBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie: MovieModel) = with(binding) {
+        fun bind(movie: MovieUI) = with(binding) {
             this.movie = movie
             root.setOnClickListener { onItemClick(movie) }
         }
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MovieModel>() {
-            override fun areItemsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean =
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MovieUI>() {
+            override fun areItemsTheSame(oldItem: MovieUI, newItem: MovieUI): Boolean =
                 oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean =
+            override fun areContentsTheSame(oldItem: MovieUI, newItem: MovieUI): Boolean =
                 oldItem == newItem
         }
     }

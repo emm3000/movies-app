@@ -1,10 +1,10 @@
 package com.emm.moviesapp.mapper
 
-import com.emm.domain.entities.MovieEntity
-import com.emm.moviesapp.model.MovieModel
+import com.emm.domain.entities.MovieModel
+import com.emm.moviesapp.model.MovieUI
 
 interface MovieUIMapper {
 
-    fun mapMovieListDomainToUI(movieEntity: MovieEntity): MovieModel
+    fun mapMovieListDomainToUI(movieModel: MovieModel): MovieUI
 
 }

@@ -5,7 +5,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.emm.moviesapp.adapters.MovieItemAdapter
-import com.emm.moviesapp.model.MovieModel
+import com.emm.moviesapp.model.MovieUI
 
 @BindingAdapter("app:url")
 fun setImageUrl(view: ImageView, url: String?) {
@@ -18,7 +18,7 @@ fun setImageUrl(view: ImageView, url: String?) {
 }
 
 @BindingAdapter("app:submitList")
-fun setMovieList(rv: RecyclerView, items: List<MovieModel>?) {
+fun setMovieList(rv: RecyclerView, items: List<MovieUI>?) {
     items?.let {
         (rv.adapter as? MovieItemAdapter)?.submitList(it)
     }

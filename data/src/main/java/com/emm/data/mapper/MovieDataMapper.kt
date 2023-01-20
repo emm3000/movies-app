@@ -1,10 +1,15 @@
 package com.emm.data.mapper
 
-import com.emm.data.response.MovieResponse
-import com.emm.domain.entities.MovieEntity
+import com.emm.data.api.response.MovieResponse
+import com.emm.data.localdatabase.entity.MovieEntity
+import com.emm.domain.entities.MovieModel
 
 interface MovieDataMapper {
 
-    fun mapMovieListResponseToDomainEntity(movieResponse: MovieResponse): MovieEntity
+    fun mapMovieListResponseToDomainModel(movieResponse: MovieResponse): MovieModel
+
+    fun mapMoviesListEntityToDomainModel(movieEntity: MovieEntity): MovieModel
+
+    fun mapMovieListResponseToEntity(movieResponse: MovieResponse): MovieEntity
 
 }

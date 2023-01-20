@@ -3,7 +3,7 @@ package com.emm.moviesapp.fragments.movieslist
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.emm.core.Result
-import com.emm.domain.entities.MovieEntity
+import com.emm.domain.entities.MovieModel
 import com.emm.domain.usecases.GetMoviesListUseCase
 import com.emm.moviesapp.fragments.movieslist.state.MoviesListState
 import com.emm.moviesapp.mapper.MovieUIMapper
@@ -34,10 +34,10 @@ class MoviesListViewModel @Inject constructor(
             .launchIn(viewModelScope)
     }
 
-    private fun handleGetMoviesListUseCase(result: Result<List<MovieEntity>>) {
+    private fun handleGetMoviesListUseCase(result: Result<List<MovieModel>>) {
         when (result) {
             is Result.Error -> {
-                _viewState.update { it.copy(isLoading = false, errorMessage = result.error.message) }
+                _viewState.update { it.copy(isLoading = false, errorMessage = result.error?.message) }
             }
             is Result.Success -> {
                 val moviesList = result.data.map(movieUIMapper::mapMovieListDomainToUI)

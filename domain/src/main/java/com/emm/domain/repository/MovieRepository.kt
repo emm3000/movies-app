@@ -1,11 +1,13 @@
 package com.emm.domain.repository
 
 import com.emm.core.Result
-import com.emm.domain.entities.MovieEntity
+import com.emm.domain.entities.MovieModel
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
 
-    fun getMoviesList(): Flow<Result<List<MovieEntity>>>
+    fun loadMoviesList(): Flow<Result<List<MovieModel>>>
+
+    fun getMovieById(movieId: String): Flow<Result<MovieModel>>
 
 }

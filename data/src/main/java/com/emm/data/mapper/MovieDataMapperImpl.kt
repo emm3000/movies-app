@@ -1,47 +1,54 @@
 package com.emm.data.mapper
 
-import com.emm.data.response.MovieResponse
-import com.emm.domain.entities.DirectorEntity
-import com.emm.domain.entities.GenreEntity
-import com.emm.domain.entities.MovieEntity
-import com.emm.domain.entities.StarEntity
+import com.emm.data.api.response.MovieResponse
+import com.emm.data.localdatabase.entity.MovieEntity
+import com.emm.domain.entities.MovieModel
 import javax.inject.Inject
 
 class MovieDataMapperImpl @Inject constructor() : MovieDataMapper {
 
-    override fun mapMovieListResponseToDomainEntity(movieResponse: MovieResponse): MovieEntity {
-        return MovieEntity(
+    override fun mapMovieListResponseToDomainModel(movieResponse: MovieResponse): MovieModel {
+        return MovieModel(
             contentRating = movieResponse.contentRating,
-            directorList = movieResponse.directorList.map {
-                DirectorEntity(
-                    id = it.id,
-                    name = it.name
-                )
-            },
             directors = movieResponse.directors,
             fullTitle = movieResponse.fullTitle,
-            genreList = movieResponse.genreList.map {
-                GenreEntity(
-                    key = it.key,
-                    value = it.value
-                )
-            },
             genres = movieResponse.genres,
             id = movieResponse.id,
-            imDbRating = movieResponse.imDbRating,
-            imDbRatingCount = movieResponse.imDbRatingCount,
             image = movieResponse.image,
-            metacriticRating = movieResponse.metacriticRating,
             plot = movieResponse.plot,
             releaseState = movieResponse.releaseState,
-            runtimeStr = movieResponse.runtimeStr,
-            runtimeMins = movieResponse.runtimeMins,
-            starList = movieResponse.starList.map {
-                StarEntity(
-                    id = it.id,
-                    name = it.name
-                )
-            },
+            stars = movieResponse.stars,
+            title = movieResponse.title,
+            year = movieResponse.year
+        )
+    }
+
+    override fun mapMoviesListEntityToDomainModel(movieEntity: MovieEntity): MovieModel {
+        return MovieModel(
+            contentRating = movieEntity.contentRating,
+            directors = movieEntity.directors,
+            fullTitle = movieEntity.fullTitle,
+            genres = movieEntity.genres,
+            id = movieEntity.id,
+            image = movieEntity.image,
+            plot = movieEntity.plot,
+            releaseState = movieEntity.releaseState,
+            stars = movieEntity.stars,
+            title = movieEntity.title,
+            year = movieEntity.year
+        )
+    }
+
+    override fun mapMovieListResponseToEntity(movieResponse: MovieResponse): MovieEntity {
+        return MovieEntity(
+            contentRating = movieResponse.contentRating,
+            directors = movieResponse.directors,
+            fullTitle = movieResponse.fullTitle,
+            genres = movieResponse.genres,
+            id = movieResponse.id,
+            image = movieResponse.image,
+            plot = movieResponse.plot,
+            releaseState = movieResponse.releaseState,
             stars = movieResponse.stars,
             title = movieResponse.title,
             year = movieResponse.year

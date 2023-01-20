@@ -9,5 +9,20 @@
         android:id="@+id/moviesListFragment"
         android:name="com.emm.moviesapp.fragments.movieslist.MoviesListFragment"
         android:label="MoviesListFragment"
-        />
+        >
+        <action
+            android:id="@+id/action_moviesListFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.emm.moviesapp.fragments.moviedetail.MovieDetailFragment"
+        android:label="MovieDetailFragment"
+        >
+        <argument
+            android:name="movieId"
+            app:argType="string"
+            />
+    </fragment>
 </navigation>

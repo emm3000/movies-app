@@ -4,8 +4,8 @@ import com.emm.core.Result
 import com.emm.domain.entities.MovieModel
 import kotlinx.coroutines.flow.Flow
 
-interface GetMoviesListUseCase {
+interface GetMovieByIdUseCase {
 
-    operator fun invoke(): Flow<Result<List<MovieModel>>>
+    operator fun invoke(id: String): Flow<Result<MovieModel>>
 
 }
