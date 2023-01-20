@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="moviesListViewModel"
-            type="com.emm.moviesapp.fragments.MoviesListViewModel"
+            type="com.emm.moviesapp.fragments.movieslist.MoviesListViewModel"
             />
 
     </data>
@@ -16,12 +21,29 @@
         android:layout_height="match_parent"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMovieList"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="hola mundo"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:submitList="@{moviesListViewModel.viewState.moviesList}"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_movie"
+            />
+
+        <include
+            android:id="@+id/viewLoading"
+            layout="@layout/view_loading"
+            android:visibility="@{moviesListViewModel.viewState.isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

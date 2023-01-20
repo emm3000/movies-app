@@ -5,6 +5,6 @@ import com.emm.domain.entities.MovieEntity
 
 interface MovieDataMapper {
 
-    fun mapMovieListResponseToDomainEntity(list: List<MovieResponse>): List<MovieEntity>
+    fun mapMovieListResponseToDomainEntity(movieResponse: MovieResponse): MovieEntity
 
 }

@@ -1,16 +1,11 @@
-package com.emm.domain.entities
+package com.emm.moviesapp.model
 
-data class MoviesEntity(
-    val errorMessage: String,
-    val items: List<MovieEntity>
-)
-
-data class MovieEntity(
+data class MovieModel(
     val contentRating: String,
-    val directorList: List<DirectorEntity>,
+    val directorList: List<DirectorModel>,
     val directors: String,
     val fullTitle: String,
-    val genreList: List<GenreEntity>,
+    val genreList: List<GenreModel>,
     val genres: String,
     val id: String,
     val imDbRating: String,
@@ -21,23 +16,23 @@ data class MovieEntity(
     val releaseState: String,
     val runtimeStr: String,
     val runtimeMins: String,
-    val starList: List<StarEntity>,
+    val starList: List<StarModel>,
     val stars: String,
     val title: String,
     val year: String
 )
 
-data class DirectorEntity(
+data class DirectorModel(
     val id: String,
     val name: String
 )
 
-data class GenreEntity(
+data class GenreModel(
     val key: String,
     val value: String
 )
 
-data class StarEntity(
+data class StarModel(
     val id: String,
     val name: String
 )

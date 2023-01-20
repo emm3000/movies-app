@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/moviesListFragment"
-        android:name="com.emm.moviesapp.fragments.MoviesListFragment"
+        android:name="com.emm.moviesapp.fragments.movieslist.MoviesListFragment"
         android:label="MoviesListFragment"
         />
 </navigation>
