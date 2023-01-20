@@ -18,11 +18,11 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     getMovieByIdUseCase: GetMovieByIdUseCase,
+    private val movieUIMapper: MovieUIMapper,
     savedStateHandle: SavedStateHandle,
-    private val movieUIMapper: MovieUIMapper
 ) : ViewModel() {
 
-    private val movieId = savedStateHandle["movieId"] ?: ""
+    private val movieId: String = savedStateHandle["movieId"] ?: ""
 
     private val _movieDetail = MutableStateFlow<MovieUI?>(null)
     val movieDetail get() = _movieDetail.asStateFlow()
