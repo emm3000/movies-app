@@ -1,8 +1,8 @@
 package com.emm.domain.di
 
-import com.emm.domain.usecases.GetMovieByIdUseCase
+import com.emm.domain.usecases.GetMovieByIdAndSimilarGenresUseCase
 import com.emm.domain.usecases.GetMoviesListUseCase
-import com.emm.domain.usecases.ProdGetMovieByIdUseCase
+import com.emm.domain.usecases.ProdGetMovieByIdAndSimilarGenresUseCase
 import com.emm.domain.usecases.ProdGetMoviesListUseCase
 import dagger.Binds
 import dagger.Module
@@ -20,7 +20,7 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun bindGetMovieByIdUseCase(
-        prodGetMovieByIdUseCase: ProdGetMovieByIdUseCase
-    ): GetMovieByIdUseCase
+        prodGetMovieByIdUseCase: ProdGetMovieByIdAndSimilarGenresUseCase
+    ): GetMovieByIdAndSimilarGenresUseCase
 
 }

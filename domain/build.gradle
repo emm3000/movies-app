@@ -39,17 +39,17 @@ android {
 dependencies {
 
     implementation(project(":core"))
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.0'
-    implementation 'com.google.android.material:material:1.7.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation Dependencies.androidCore
+    implementation Dependencies.appCompat
+    implementation Dependencies.material
+    testImplementation Dependencies.junit
+    androidTestImplementation Dependencies.androidJunit
+    androidTestImplementation Dependencies.espresso
 
-    implementation "com.google.dagger:hilt-android:2.44"
-    kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation Dependencies.daggerHilt
+    kapt Dependencies.daggerCompiler
 
-    testImplementation "io.mockk:mockk:1.12.2"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0"
-    testImplementation "com.google.truth:truth:1.1.3"
+    testImplementation Dependencies.mockk
+    testImplementation Dependencies.coroutinesTest
+    testImplementation Dependencies.truth
 }

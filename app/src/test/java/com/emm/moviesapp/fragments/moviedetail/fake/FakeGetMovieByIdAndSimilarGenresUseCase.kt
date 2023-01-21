@@ -1,28 +1,37 @@
 package com.emm.moviesapp.fragments.moviedetail.fake
 
+import com.emm.core.Failure
 import com.emm.core.Result
 import com.emm.domain.entities.MovieModel
-import com.emm.domain.usecases.GetMovieByIdUseCase
+import com.emm.domain.entities.MovieWithSimilarGenresModel
+import com.emm.domain.usecases.GetMovieByIdAndSimilarGenresUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 
-class FakeGetMovieByIdUseCase : GetMovieByIdUseCase {
+class FakeGetMovieByIdAndSimilarGenresUseCase : GetMovieByIdAndSimilarGenresUseCase {
 
     private val moviesList = generateFakeData()
 
-    private val flow = MutableSharedFlow<Result<MovieModel>>()
+    private val flow = MutableSharedFlow<Result<MovieWithSimilarGenresModel>>()
 
     suspend fun emit(id: String) {
-        val movie: MovieModel? = moviesList.firstOrNull { it.id == id }
-        if (movie != null) {
-            flow.emit(Result.Success(movie))
+        val searchedMovie: MovieModel? = moviesList.firstOrNull { it.id == id }
+        if (searchedMovie != null) {
+            flow.emit(
+                Result.Success(
+                    MovieWithSimilarGenresModel(
+                        movie = searchedMovie,
+                        similarGenres = moviesList
+                    )
+                )
+            )
         } else {
-            flow.emit(Result.Error())
+            flow.emit(Result.Error(Failure.None))
         }
 
     }
 
-    override fun invoke(id: String): Flow<Result<MovieModel>> {
+    override fun invoke(movieID: String): Flow<Result<MovieWithSimilarGenresModel>> {
         return flow
     }
 
@@ -47,5 +56,6 @@ class FakeGetMovieByIdUseCase : GetMovieByIdUseCase {
         }
         return list
     }
+
 
 }

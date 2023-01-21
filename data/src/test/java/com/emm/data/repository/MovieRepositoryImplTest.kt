@@ -7,6 +7,7 @@ import com.emm.data.datasource.local.LocalMovieDataSource
 import com.emm.data.datasource.remote.RemoteMovieDataSource
 import com.emm.data.localdatabase.entity.MovieEntity
 import com.emm.data.mapper.MovieDataMapperImpl
+import com.google.common.truth.Truth.assertThat
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -60,6 +61,28 @@ class MovieRepositoryImplTest {
         coVerify(exactly = 1) { localMovieDataSource.insertMovies(any()) }
     }
 
+    @Test
+    fun `Validate that the list of movies in the database is queried when a movie exists by its id`() = runTest {
+        val movieID = "3"
+        coEvery { localMovieDataSource.getMoviesList() } returns fakeMovieEntityList()
+        coEvery { localMovieDataSource.getMovieById(any()) } returns fakeMovieEntity()
+
+        movieRepositoryImpl.getMovieByIdWithSimilarGenres(movieID).first()
+
+        coVerify(exactly = 1) { localMovieDataSource.getMoviesList() }
+    }
+
+    @Test
+    fun `Validate that similar movies exist`() = runTest {
+        val movieID = "3"
+        coEvery { localMovieDataSource.getMoviesList() } returns fakeMovieEntityList()
+        coEvery { localMovieDataSource.getMovieById(any()) } returns fakeMovieEntity()
+
+        val movieWithSimilarGenresModelResult = movieRepositoryImpl.getMovieByIdWithSimilarGenres(movieID).first()
+
+        assertThat((movieWithSimilarGenresModelResult as Success).data.similarGenres).isNotEmpty()
+    }
+
     companion object {
         fun fakeMovieResponse(): MoviesResponse {
             return MoviesResponse(
@@ -93,7 +116,7 @@ class MovieRepositoryImplTest {
                     contentRating = "",
                     directors = "",
                     fullTitle = "",
-                    genres = "",
+                    genres = "Action, Drama",
                     image = "",
                     plot = "",
                     releaseState = "",
@@ -103,6 +126,24 @@ class MovieRepositoryImplTest {
                 )
             }
         }
+
+        fun fakeMovieEntity(): MovieEntity {
+            return MovieEntity(
+                id = "3",
+                contentRating = "",
+                directors = "",
+                fullTitle = "",
+                genres = "Action",
+                image = "",
+                plot = "",
+                releaseState = "",
+                stars = "",
+                title = "",
+                year = ""
+            )
+        }
+
+
     }
 
 }

@@ -2,7 +2,7 @@ package com.emm.moviesapp.fragments.moviedetail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.SavedStateHandle
-import com.emm.moviesapp.fragments.moviedetail.fake.FakeGetMovieByIdUseCase
+import com.emm.moviesapp.fragments.moviedetail.fake.FakeGetMovieByIdAndSimilarGenresUseCase
 import com.emm.moviesapp.mapper.MovieUIMapperImpl
 import com.google.common.truth.Truth.assertThat
 import io.mockk.MockKAnnotations
@@ -41,19 +41,19 @@ class MovieDetailViewModelTest {
         val movieID = "2"
         coEvery { savedStateHandle.get<String>(any()) } returns movieID
 
-        val fakeRepo = FakeGetMovieByIdUseCase()
+        val fakeRepository = FakeGetMovieByIdAndSimilarGenresUseCase()
 
         val viewModel = MovieDetailViewModel(
-            getMovieByIdUseCase = fakeRepo,
+            getMovieByIdAndSimilarGenresUseCase = fakeRepository,
             movieUIMapper = movieUIMapper,
             savedStateHandle = savedStateHandle
         )
 
         delay(1L)
 
-        fakeRepo.emit(movieID)
+        fakeRepository.emit(movieID)
 
-        assertThat(viewModel.movieDetail.value?.id).isEqualTo(movieID)
+        assertThat(viewModel.viewState.value.currentMovie?.id).isEqualTo(movieID)
 
     }
 

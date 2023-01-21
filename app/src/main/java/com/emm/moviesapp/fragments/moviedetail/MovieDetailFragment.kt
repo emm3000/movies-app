@@ -9,7 +9,8 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.emm.moviesapp.fragments.moviedetail.compose.MovieDetailScreen
+import com.emm.moviesapp.fragments.moviedetail.screen.MovieDetailScreen
+import com.emm.moviesapp.fragments.moviedetail.theme.MovieDetailTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,10 +22,12 @@ class MovieDetailFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                MovieDetailScreen(
-                    viewModel = viewModel,
-                    onBackButtonAction = { findNavController().popBackStack() }
-                )
+                MovieDetailTheme {
+                    MovieDetailScreen(
+                        viewModel = viewModel,
+                        onBackButtonAction = { findNavController().popBackStack() }
+                    )
+                }
             }
         }
     }

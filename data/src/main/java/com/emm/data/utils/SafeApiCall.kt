@@ -1,9 +1,9 @@
 package com.emm.data.utils
 
+import com.emm.core.Failure
 import com.emm.core.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.HttpException
 import retrofit2.Response
 import java.lang.Exception
 
@@ -16,10 +16,10 @@ suspend inline fun <T> safeApiCall(
             if (result.isSuccessful && result.body() != null) {
                 Result.Success(data = result.body()!!)
             } else {
-                Result.Error(HttpException(result))
+                Result.Error(Failure.NetworkError(message = "HttpException, -> message"))
             }
         } catch (e: Exception) {
-            Result.Error(e)
+            Result.Error(Failure.None)
         }
     }
 }

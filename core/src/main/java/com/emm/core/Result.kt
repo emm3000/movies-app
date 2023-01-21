@@ -7,16 +7,16 @@ package com.emm.core
  */
 sealed class Result<out T> {
     data class Success<out T>(val data: T) : Result<T>()
-    data class Error(val error: Throwable? = null) : Result<Nothing>()
+    data class Error(val failure: Failure? = null) : Result<Nothing>()
 }
 
 /**
  * Extensión para mapear los modelos entre la capa de dominio y data, según el resultado [Result],
  * de la consulta a la fuente de datos.
  */
-fun <T, X> Result<T>.mapper(mapper: (T) -> X): Result<X> {
+inline fun <T, X> Result<T>.mapper(mapper: (T) -> X): Result<X> {
     return when (this) {
-        is Result.Error -> Result.Error(this.error)
+        is Result.Error -> Result.Error(this.failure)
         is Result.Success -> Result.Success(mapper(this.data))
     }
 }

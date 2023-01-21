@@ -18,8 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MoviesListViewModel @Inject constructor(
+    private val movieUIMapper: MovieUIMapper,
     getMoviesListUseCase: GetMoviesListUseCase,
-    private val movieUIMapper: MovieUIMapper
 ) : ViewModel() {
 
     private val _viewState = MutableStateFlow(MoviesListState())
@@ -37,10 +37,11 @@ class MoviesListViewModel @Inject constructor(
     private fun handleGetMoviesListUseCase(result: Result<List<MovieModel>>) {
         when (result) {
             is Result.Error -> {
+                result.failure?.error?.printStackTrace()
                 _viewState.update {
                     it.copy(
                         isLoading = false,
-                        errorMessage = result.error?.message
+                        errorMessage = result.failure?.message
                     )
                 }
             }

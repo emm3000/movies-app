@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">MoviesApp</string>
+    <string name="tv_title">Movies - App</string>
+    <string name="lbl_title">Title</string>
+    <string name="lbl_directors">Directors</string>
+    <string name="lbl_release_state">Release State</string>
+    <string name="lbl_description">Description</string>
+    <string name="lbl_content_rating">Content Rating</string>
+    <string name="img_des_back_arrow">Back Arrow</string>
+    <string name="img_desc_image_movie">ImageMovie</string>
+    <string name="lbl_similar_genres">Similar Genres</string>
+    <string name="lbl_similar_directors">Similar Directors</string>
+    <string name="lbl_similar_stars">Similar Stars</string>
 </resources>
