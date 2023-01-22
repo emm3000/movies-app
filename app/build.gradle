@@ -79,7 +79,6 @@ dependencies {
     debugImplementation Dependencies.composeToolingDebug
 
     implementation Dependencies.coilCompose
-//    implementation("androidx.navigation:navigation-compose:2.5.3")
 
     testImplementation Dependencies.mockk
     testImplementation Dependencies.coroutinesTest

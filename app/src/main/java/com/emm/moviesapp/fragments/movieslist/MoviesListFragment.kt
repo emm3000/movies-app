@@ -92,5 +92,4 @@ class MoviesListFragment : Fragment() {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-
 }

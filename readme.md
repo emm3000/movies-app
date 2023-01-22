@@ -3,11 +3,34 @@
 <img src="/preview/detail_preview.png" width="45%"/>
 </p>
 
+# Librerías
+
+- 100% basado en [Kotlin](https://kotlinlang.org/) + [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/)
+- Hilt para injección de dependencias.
+- Jetpack
+  - Lifecycle: Ciclos de vida.
+  - ViewModel
+  - Navigation: Para navegación.
+  - Room.
+  - [Hilt](https://dagger.dev/hilt/): Injección de dependencias.
+- Architecture
+  - MVVM Architecture: View - DataBinding - ViewModel - Model
+  - MVVM Architecture: Compose View - ViewModel - Model
+- [Material Design](https://material.io/design): Componentes de Google para la UI.
+- [Retrofit2 & OkHttp3](https://github.com/square/retrofit): Cliente Rest.
+- [Coil](https://github.com/coil-kt/coil): Para carga de imagenes en Views y Jetpack Compose.
+- [Mockk](https://mockk.io/): Librería para mockear clases en Kotlin
+- [Truth](https://github.com/google/truth): Librería de aserciones en Unit Test
+
 # Arquitectura de la Aplicación
 
 La aplicación se divide en 4 módulos: `data`, `domain`, `app` y `core`
 
 En la capa de presentación se usa el patrón MVVM, para separar la lógica de negocio y la presentación de los datos en la interfaz de usuario.
+
+<p align="center">
+<img src="/preview/apparchitecture.png" width="45%"/>
+</p>
 
 ---
 
@@ -43,3 +66,4 @@ En la capa de presentación se usa el patrón MVVM, para separar la lógica de n
 
 ## Módulo Core
 Módulo de utilitarios.
+
