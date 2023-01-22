@@ -1,6 +1,6 @@
 <p align="center">
 <img src="/preview/list_preview.png" width="45%"/>
-<img src="/preview/list_preview.png" width="45%"/>
+<img src="/preview/detail_preview.png" width="45%"/>
 </p>
 
 # Arquitectura de la Aplicación
