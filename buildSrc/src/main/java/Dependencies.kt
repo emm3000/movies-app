@@ -36,6 +36,8 @@ object Dependencies {
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val androidSplash = "androidx.core:core-splashscreen:${Versions.androidSplash}"
 
+    const val java8Compatibility = "com.android.tools:desugar_jdk_libs:${Versions.java8Compatibility}"
+
 
     // Test Libraries
     const val mockk = "io.mockk:mockk:${Versions.mockk}"

@@ -29,4 +29,6 @@ object Versions {
     const val composeVersion = "1.3.1"
 
     const val androidSplash = "1.0.0"
+
+    const val java8Compatibility = "1.1.6"
 }

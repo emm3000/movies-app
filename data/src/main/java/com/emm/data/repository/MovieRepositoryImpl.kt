@@ -3,11 +3,11 @@ package com.emm.data.repository
 import com.emm.core.Failure
 import com.emm.core.Result
 import com.emm.core.mapper
-import com.emm.data.api.response.MoviesResponse
 import com.emm.data.datasource.local.LocalMovieDataSource
 import com.emm.data.datasource.remote.RemoteMovieDataSource
 import com.emm.data.localdatabase.entity.MovieEntity
 import com.emm.data.mapper.MovieDataMapper
+import com.emm.data.utils.releaseStateToEpochMillis
 import com.emm.domain.entities.MovieModel
 import com.emm.domain.entities.MovieWithSimilarGenresModel
 import com.emm.domain.repository.MovieRepository
@@ -26,15 +26,21 @@ class MovieRepositoryImpl @Inject constructor(
         val movies = localMovieDataSource.getMoviesList()
 
         if (movies.isEmpty()) {
-            when (val fetchMovies: Result<MoviesResponse> = movieDataSource.getMoviesList()) {
+            when (val fetchMovies = movieDataSource.getMoviesList()) {
                 is Result.Error -> emit(Result.Error(fetchMovies.failure))
                 is Result.Success -> {
-                    localMovieDataSource.insertMovies(fetchMovies.data.items.map(movieDataMapper::mapMovieListResponseToEntity))
 
-                    val moviesDomain: Result<List<MovieModel>> = fetchMovies.mapper {
-                        it.items.map(movieDataMapper::mapMovieListResponseToDomainModel)
+                    val sortedMoviesByReleaseState = fetchMovies.data.items
+                        .sortedByDescending { it.releaseState.releaseStateToEpochMillis() }
+
+                    localMovieDataSource.insertMovies(
+                        movies = sortedMoviesByReleaseState.map(movieDataMapper::mapMovieListResponseToEntity)
+                    )
+
+                    val resultToDomain: Result<List<MovieModel>> = fetchMovies.mapper {
+                        sortedMoviesByReleaseState.map(movieDataMapper::mapMovieListResponseToDomainModel)
                     }
-                    emit(moviesDomain)
+                    emit(resultToDomain)
                 }
             }
         } else {
