@@ -6,6 +6,6 @@ import androidx.compose.runtime.Composable
 @Composable
 fun MovieDetailTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        content = content
+        content = content,
     )
 }

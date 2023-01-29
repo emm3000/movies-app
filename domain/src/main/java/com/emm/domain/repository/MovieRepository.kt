@@ -10,5 +10,4 @@ interface MovieRepository {
     fun loadMoviesList(): Flow<Result<List<MovieModel>>>
 
     fun getMovieByIdWithSimilarGenres(movieId: String): Flow<Result<MovieWithSimilarGenresModel>>
-
 }

@@ -40,23 +40,22 @@ import androidx.compose.ui.unit.sp
 import com.emm.moviesapp.R
 import com.emm.moviesapp.fragments.moviedetail.MovieDetailViewModel
 import com.emm.moviesapp.fragments.moviedetail.components.CoilImage
-import com.emm.moviesapp.fragments.moviedetail.components.TitleText
 import com.emm.moviesapp.fragments.moviedetail.components.LabelText
 import com.emm.moviesapp.fragments.moviedetail.components.MovieItem
+import com.emm.moviesapp.fragments.moviedetail.components.TitleText
 import com.emm.moviesapp.fragments.moviedetail.state.MovieDetailState
 import com.emm.moviesapp.model.MovieUI
 
 @Composable
 fun MovieDetailScreen(
     viewModel: MovieDetailViewModel,
-    onBackButtonAction: () -> Unit = {}
+    onBackButtonAction: () -> Unit = {},
 ) {
     val viewState: MovieDetailState by viewModel.viewState.collectAsState()
     MovieDetail(
         viewState = viewState,
-        onBackButtonAction = onBackButtonAction
+        onBackButtonAction = onBackButtonAction,
     )
-
 }
 
 @Composable
@@ -64,24 +63,24 @@ private fun MovieDetail(viewState: MovieDetailState, onBackButtonAction: () -> U
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = colorResource(id = R.color.gray))
+            .background(color = colorResource(id = R.color.gray)),
     ) {
         if (viewState.isLoading) {
             CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center),
             )
         }
         AnimatedVisibility(
             visible = !viewState.isLoading,
             enter = fadeIn(animationSpec = tween(1000)),
-            exit = fadeOut(animationSpec = tween(1000))
+            exit = fadeOut(animationSpec = tween(1000)),
         ) {
             MovieDetailBody(
                 movie = viewState.currentMovie,
                 similarGenresMovies = viewState.similarGenres,
                 similarDirectorsMovies = viewState.similarDirectors,
                 similarStarsMovies = viewState.similarStars,
-                onBackButtonAction = onBackButtonAction
+                onBackButtonAction = onBackButtonAction,
             )
         }
     }
@@ -93,19 +92,18 @@ private fun MovieDetailBody(
     similarGenresMovies: List<MovieUI> = emptyList(),
     similarDirectorsMovies: List<MovieUI> = emptyList(),
     similarStarsMovies: List<MovieUI> = emptyList(),
-    onBackButtonAction: () -> Unit = {}
+    onBackButtonAction: () -> Unit = {},
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(state = rememberScrollState())
             .background(color = colorResource(id = R.color.gray)),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-
         HeaderDetail(
             movieTitle = movie?.title.orEmpty(),
-            onBackButtonAction = onBackButtonAction
+            onBackButtonAction = onBackButtonAction,
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -115,7 +113,7 @@ private fun MovieDetailBody(
         Column(
             modifier = Modifier
                 .fillMaxHeight()
-                .padding(20.dp)
+                .padding(20.dp),
         ) {
             LabelText(label = stringResource(R.string.lbl_title), value = movie?.fullTitle)
             LabelText(label = stringResource(R.string.lbl_directors), value = movie?.directors)
@@ -126,24 +124,23 @@ private fun MovieDetailBody(
 
         MovieListOfSimilarFeatures(
             similarMovies = similarGenresMovies,
-            title = stringResource(R.string.lbl_similar_genres)
+            title = stringResource(R.string.lbl_similar_genres),
         )
         MovieListOfSimilarFeatures(
             similarMovies = similarDirectorsMovies,
-            title = stringResource(R.string.lbl_similar_directors)
+            title = stringResource(R.string.lbl_similar_directors),
         )
         MovieListOfSimilarFeatures(
             similarMovies = similarStarsMovies,
-            title = stringResource(R.string.lbl_similar_stars)
+            title = stringResource(R.string.lbl_similar_stars),
         )
-
     }
 }
 
 @Composable
 private fun HeaderDetail(
     movieTitle: String?,
-    onBackButtonAction: () -> Unit
+    onBackButtonAction: () -> Unit,
 ) {
     Box(
         modifier = Modifier
@@ -156,7 +153,7 @@ private fun HeaderDetail(
                 .fillMaxHeight()
                 .fillMaxWidth(0.7f)
                 .align(Alignment.Center),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
             TitleText(text = movieTitle.orEmpty())
         }
@@ -164,7 +161,7 @@ private fun HeaderDetail(
             Icon(
                 imageVector = Icons.Default.ArrowBack,
                 contentDescription = stringResource(R.string.img_des_back_arrow),
-                tint = Color.White
+                tint = Color.White,
             )
         }
     }
@@ -173,18 +170,17 @@ private fun HeaderDetail(
 @Composable
 private fun MovieListOfSimilarFeatures(
     similarMovies: List<MovieUI>,
-    title: String
+    title: String,
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = 10.dp)
+            .padding(bottom = 10.dp),
     ) {
-
         TitleText(
             text = title,
             fontSize = 20.sp,
-            modifier = Modifier.padding(horizontal = 20.dp)
+            modifier = Modifier.padding(horizontal = 20.dp),
         )
 
         Spacer(modifier = Modifier.heightIn(6.dp))
@@ -192,7 +188,7 @@ private fun MovieListOfSimilarFeatures(
         LazyRow(
             state = rememberLazyListState(),
             contentPadding = PaddingValues(horizontal = 20.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             items(similarMovies) { movie ->
                 MovieItem(movie = movie)
@@ -200,7 +196,6 @@ private fun MovieListOfSimilarFeatures(
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
@@ -218,8 +213,8 @@ fun DetailScreenPreview() {
                 releaseState = "xx xx xx",
                 stars = "",
                 title = "Title Movie",
-                year = ""
-            )
+                year = "",
+            ),
         )
     }
 }

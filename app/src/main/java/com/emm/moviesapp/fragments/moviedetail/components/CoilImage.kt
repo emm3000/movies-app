@@ -20,7 +20,7 @@ import com.emm.moviesapp.R
 @Composable
 fun CoilImage(
     urlImg: String,
-    @DrawableRes debugPreview: Int = R.drawable.ic_launcher_background
+    @DrawableRes debugPreview: Int = R.drawable.ic_launcher_background,
 ) {
     AsyncImage(
         model = ImageRequest.Builder(LocalContext.current)
@@ -33,7 +33,7 @@ fun CoilImage(
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .widthIn(150.dp)
-            .clip(RoundedCornerShape(5.dp))
+            .clip(RoundedCornerShape(5.dp)),
     )
 }
 

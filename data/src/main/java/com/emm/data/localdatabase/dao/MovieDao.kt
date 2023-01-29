@@ -17,5 +17,4 @@ interface MovieDao {
 
     @Query("SELECT * FROM MovieEntity")
     suspend fun getMovies(): List<MovieEntity>
-
 }

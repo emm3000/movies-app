@@ -22,13 +22,13 @@ import com.emm.moviesapp.fragments.moviedetail.theme.fontFamily
 @Composable
 fun LabelText(
     label: String,
-    value: String?
+    value: String?,
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.Start,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
             text = buildAnnotatedString {
@@ -36,8 +36,8 @@ fun LabelText(
                     style = SpanStyle(
                         fontWeight = FontWeight.Bold,
                         color = Color.White,
-                        fontFamily = fontFamily
-                    )
+                        fontFamily = fontFamily,
+                    ),
                 ) {
                     append("$label : ")
                 }
@@ -45,14 +45,14 @@ fun LabelText(
                     style = SpanStyle(
                         fontWeight = FontWeight.Normal,
                         color = colorResource(id = R.color.grayAEAEAE),
-                        fontFamily = fontFamily
-                    )
+                        fontFamily = fontFamily,
+                    ),
                 ) {
                     append(value.orEmpty())
                 }
             },
             modifier = Modifier
-                .align(Alignment.CenterVertically)
+                .align(Alignment.CenterVertically),
         )
     }
 }

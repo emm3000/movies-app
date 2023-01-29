@@ -15,7 +15,7 @@ class ProdGetMoviesListUseCaseTest {
     private val fakeMovieRepository = FakeMovieRepository()
 
     private val useCase = ProdGetMoviesListUseCase(
-        movieRepository = fakeMovieRepository
+        movieRepository = fakeMovieRepository,
     )
 
     @Before
@@ -29,7 +29,6 @@ class ProdGetMoviesListUseCaseTest {
         val movieList: Result<List<MovieModel>> = useCase.invoke().first()
 
         Truth.assertThat((movieList as Result.Success).data.size).isEqualTo(expectedResult.data.size)
-
     }
 
     private fun generateFakeData(): List<MovieModel> {
@@ -47,8 +46,8 @@ class ProdGetMoviesListUseCaseTest {
                     releaseState = "",
                     stars = "",
                     title = "",
-                    year = ""
-                )
+                    year = "",
+                ),
             )
         }
         return list

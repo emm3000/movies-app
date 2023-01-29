@@ -82,14 +82,12 @@ class MoviesListFragment : Fragment() {
         if (permissionToRequest.isNotEmpty()) {
             requestPermission.launch(permissionToRequest.toTypedArray())
         }
-
     }
 
     private fun checkSelfPermission(permission: String): Boolean {
         return ContextCompat.checkSelfPermission(
             requireContext(),
-            permission
+            permission,
         ) == PackageManager.PERMISSION_GRANTED
     }
-
 }

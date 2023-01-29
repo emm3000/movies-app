@@ -2,7 +2,7 @@ package com.emm.data.api.response
 
 data class MoviesResponse(
     val errorMessage: String,
-    val items: List<MovieResponse>
+    val items: List<MovieResponse>,
 )
 
 data class MovieResponse(
@@ -16,5 +16,5 @@ data class MovieResponse(
     val releaseState: String,
     val stars: String,
     val title: String,
-    val year: String
+    val year: String,
 )

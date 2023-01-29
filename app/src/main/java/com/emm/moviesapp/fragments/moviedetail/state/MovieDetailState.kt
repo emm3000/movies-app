@@ -8,5 +8,5 @@ data class MovieDetailState(
     val similarDirectors: List<MovieUI> = emptyList(),
     val similarStars: List<MovieUI> = emptyList(),
     val isLoading: Boolean = false,
-    val errorMessage: String? = null
+    val errorMessage: String? = null,
 )

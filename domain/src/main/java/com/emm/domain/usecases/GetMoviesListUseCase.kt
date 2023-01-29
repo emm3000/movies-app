@@ -7,5 +7,4 @@ import kotlinx.coroutines.flow.Flow
 interface GetMoviesListUseCase {
 
     operator fun invoke(): Flow<Result<List<MovieModel>>>
-
 }

@@ -18,8 +18,7 @@ class MovieUIMapperImpl @Inject constructor() : MovieUIMapper {
             releaseState = movieModel.releaseState,
             stars = movieModel.stars,
             title = movieModel.title,
-            year = movieModel.year
+            year = movieModel.year,
         )
     }
-
 }

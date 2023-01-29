@@ -24,6 +24,6 @@ fun TitleText(
         modifier = modifier,
         fontFamily = fontFamily,
         overflow = TextOverflow.Ellipsis,
-        color = Color.White
+        color = Color.White,
     )
 }

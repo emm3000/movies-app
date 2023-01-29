@@ -41,7 +41,7 @@ class MoviesListViewModel @Inject constructor(
                 _viewState.update {
                     it.copy(
                         isLoading = false,
-                        errorMessage = result.failure?.message
+                        errorMessage = result.failure?.message,
                     )
                 }
             }
@@ -53,5 +53,4 @@ class MoviesListViewModel @Inject constructor(
             }
         }
     }
-
 }

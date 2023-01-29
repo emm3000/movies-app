@@ -14,14 +14,11 @@ import kotlin.reflect.KProperty
 
 class FragmentViewBindingDelegate<T : ViewBinding>(
     val fragment: Fragment,
-    val viewBindingFactory: (View) -> T
+    val viewBindingFactory: (View) -> T,
 ) : ReadOnlyProperty<Fragment, T> {
     private var binding: T? = null
 
     init {
-        MainScope().launch {
-
-        }
         fragment.lifecycle.addObserver(object : DefaultLifecycleObserver {
             val viewLifecycleOwnerLiveDataObserver =
                 Observer<LifecycleOwner?> {

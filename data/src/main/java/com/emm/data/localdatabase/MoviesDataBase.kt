@@ -8,7 +8,7 @@ import com.emm.data.localdatabase.entity.MovieEntity
 @Database(
     entities = [MovieEntity::class],
     version = 1,
-    exportSchema = false
+    exportSchema = false,
 )
 abstract class MoviesDataBase : RoomDatabase() {
 

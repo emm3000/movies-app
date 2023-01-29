@@ -13,7 +13,6 @@ abstract class UIMappersModule {
 
     @Binds
     abstract fun bindMovieUIMapper(
-        movieUIMapperImpl: MovieUIMapperImpl
+        movieUIMapperImpl: MovieUIMapperImpl,
     ): MovieUIMapper
-
 }

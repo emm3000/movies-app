@@ -11,5 +11,5 @@ data class MovieModel(
     val releaseState: String,
     val stars: String,
     val title: String,
-    val year: String
+    val year: String,
 )

@@ -11,5 +11,4 @@ interface MovieDataMapper {
     fun mapMoviesListEntityToDomainModel(movieEntity: MovieEntity): MovieModel
 
     fun mapMovieListResponseToEntity(movieResponse: MovieResponse): MovieEntity
-
 }

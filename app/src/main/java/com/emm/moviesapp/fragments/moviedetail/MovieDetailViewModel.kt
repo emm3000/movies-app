@@ -49,11 +49,10 @@ class MovieDetailViewModel @Inject constructor(
                         similarGenres = result.data.similarGenres.map(movieUIMapper::mapMovieListDomainToUI).shuffled(),
                         similarDirectors = result.data.similarGenres.map(movieUIMapper::mapMovieListDomainToUI).shuffled(),
                         similarStars = result.data.similarGenres.map(movieUIMapper::mapMovieListDomainToUI).shuffled(),
-                        isLoading = false
+                        isLoading = false,
                     )
                 }
             }
         }
     }
-
 }

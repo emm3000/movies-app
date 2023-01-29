@@ -1,7 +1,6 @@
 package com.emm.domain.usecases
 
 import com.emm.core.Result
-import com.emm.core.Result.*
 import com.emm.domain.entities.MovieModel
 import com.emm.domain.entities.MovieWithSimilarGenresModel
 import com.emm.domain.usecases.fake.FakeMovieRepository
@@ -18,7 +17,7 @@ class ProdGetMovieByIdAndSimilarGenresUseCaseTest {
     private val fakeMovieRepository = FakeMovieRepository()
 
     private val useCase = ProdGetMovieByIdAndSimilarGenresUseCase(
-        movieRepository = fakeMovieRepository
+        movieRepository = fakeMovieRepository,
     )
 
     @Before
@@ -28,11 +27,10 @@ class ProdGetMovieByIdAndSimilarGenresUseCaseTest {
 
     @Test
     fun `check the search for a movie by its id`() = runTest {
-        val expectedResult: Success<MovieModel> = Success(generateFakeData()[2])
+        val expectedResult: Result.Success<MovieModel> = Result.Success(generateFakeData()[2])
         val searchedMovieWithId2: Result<MovieWithSimilarGenresModel> = useCase.invoke(movieID = "2").first()
 
-        assertThat((searchedMovieWithId2 as Success).data.movie).isEqualTo(expectedResult.data)
-
+        assertThat((searchedMovieWithId2 as Result.Success).data.movie).isEqualTo(expectedResult.data)
     }
 
     @Test
@@ -57,8 +55,8 @@ class ProdGetMovieByIdAndSimilarGenresUseCaseTest {
                     releaseState = "",
                     stars = "",
                     title = "",
-                    year = ""
-                )
+                    year = "",
+                ),
             )
         }
         return list
