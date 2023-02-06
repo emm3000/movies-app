@@ -9,7 +9,7 @@ object Versions {
     const val retrofit = "2.9.0"
     const val retrofitInterceptor = "4.10.0"
 
-    const val daggerHilt = "2.44"
+    const val daggerHilt = "2.44.2"
     const val junit = "4.13.2"
     const val androidJunit = "1.1.5"
     const val espresso = "3.5.1"
