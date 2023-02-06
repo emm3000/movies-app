@@ -11,7 +11,6 @@ import com.emm.data.utils.releaseStateToEpochMillis
 import com.emm.domain.entities.MovieModel
 import com.emm.domain.entities.MovieWithSimilarGenresModel
 import com.emm.domain.repository.MovieRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -48,7 +47,7 @@ class MovieRepositoryImpl @Inject constructor(
     }
 
     override fun getMovieByIdWithSimilarGenres(movieId: String): Flow<Result<MovieWithSimilarGenresModel>> = flow {
-        //delay(400L) // To test Loading in [MovieDetailScreen.kt]
+        // delay(400L) // To test Loading in [MovieDetailScreen.kt]
 
         val searchedMovie: MovieEntity? = localMovieDataSource.getMovieById(movieId)
         if (searchedMovie != null) {
