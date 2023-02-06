@@ -35,9 +35,11 @@ class MoviesListFragment : Fragment() {
         }
     }
 
-    // format x d w q x w w D s s s
+    // format x d w q x w w D s s s a
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentMoviesListBinding.inflate(inflater, container, false)
