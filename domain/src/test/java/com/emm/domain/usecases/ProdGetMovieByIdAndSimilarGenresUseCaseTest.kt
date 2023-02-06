@@ -37,7 +37,7 @@ class ProdGetMovieByIdAndSimilarGenresUseCaseTest {
     fun `Verify an erroneous result when no movie exists in the database`() = runTest {
         val movieNothing: Result<MovieWithSimilarGenresModel> = useCase.invoke(movieID = "20").first()
 
-        assertThat(movieNothing).isInstanceOf(Error::class.java)
+        assertThat(movieNothing).isInstanceOf(Result.Error::class.java)
     }
 
     private fun generateFakeData(): List<MovieModel> {

@@ -48,7 +48,7 @@ class MovieRepositoryImpl @Inject constructor(
     }
 
     override fun getMovieByIdWithSimilarGenres(movieId: String): Flow<Result<MovieWithSimilarGenresModel>> = flow {
-        delay(400L) // To test Loading in [MovieDetailScreen.kt]
+        //delay(400L) // To test Loading in [MovieDetailScreen.kt]
 
         val searchedMovie: MovieEntity? = localMovieDataSource.getMovieById(movieId)
         if (searchedMovie != null) {
