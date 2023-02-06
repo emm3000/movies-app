@@ -35,7 +35,7 @@ class MoviesListFragment : Fragment() {
         }
     }
 
-    // format x d w q
+    // format x d w q x
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
