@@ -1,8 +1,7 @@
 package com.emm.core.fake
 
-class Utils {
+object Utils {
 
-    companion object {
-        const val RED = "RED"
-    }
+    const val RED = "RED"
+    const val YELLOW = "YELLOW"
 }
