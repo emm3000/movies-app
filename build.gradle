@@ -6,6 +6,7 @@ buildscript {
 
     dependencies {
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3")
+        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.22.0"
     }
 }
 
@@ -13,5 +14,22 @@ plugins {
     id 'com.android.application' version '7.3.1' apply false
     id 'com.android.library' version '7.3.1' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
-    id 'com.google.dagger.hilt.android' version '2.44' apply false
+    id 'com.google.dagger.hilt.android' version '2.44.2' apply false
+    id "org.jlleitschuh.gradle.ktlint" version '11.1.0'
 }
+
+apply from: "buildscripts/git-hooks.gradle"
+
+
+subprojects {
+    apply from: "../buildscripts/ktlint.gradle"
+    apply from: "../buildscripts/detekt.gradle"
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+//afterEvaluate {
+//    tasks['clean'].dependsOn installGitHooks
+//}

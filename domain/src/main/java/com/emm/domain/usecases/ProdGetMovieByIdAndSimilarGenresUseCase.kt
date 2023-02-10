@@ -7,11 +7,10 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class ProdGetMovieByIdAndSimilarGenresUseCase @Inject constructor(
-    private val movieRepository: MovieRepository
+    private val movieRepository: MovieRepository,
 ) : GetMovieByIdAndSimilarGenresUseCase {
 
     override fun invoke(movieID: String): Flow<Result<MovieWithSimilarGenresModel>> {
         return movieRepository.getMovieByIdWithSimilarGenres(movieID)
     }
-
 }

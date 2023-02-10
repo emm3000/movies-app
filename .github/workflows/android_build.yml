@@ -1,0 +1,25 @@
+name: Android Build
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Build Project
+        run: ./gradlew assemble
+
+      - name: Run Tests
+        run: ./gradlew test
+
+      - name: Lint Checks
+        run: ./gradlew ktlintCheck detekt

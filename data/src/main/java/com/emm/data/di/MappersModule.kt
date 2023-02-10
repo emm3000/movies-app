@@ -13,5 +13,4 @@ abstract class MappersModule {
 
     @Binds
     abstract fun bindMovieDataMapper(movieDataMapperImpl: MovieDataMapperImpl): MovieDataMapper
-
 }

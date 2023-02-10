@@ -21,14 +21,13 @@ class FakeGetMovieByIdAndSimilarGenresUseCase : GetMovieByIdAndSimilarGenresUseC
                 Result.Success(
                     MovieWithSimilarGenresModel(
                         movie = searchedMovie,
-                        similarGenres = moviesList
-                    )
-                )
+                        similarGenres = moviesList,
+                    ),
+                ),
             )
         } else {
             flow.emit(Result.Error(Failure.None))
         }
-
     }
 
     override fun invoke(movieID: String): Flow<Result<MovieWithSimilarGenresModel>> {
@@ -50,12 +49,10 @@ class FakeGetMovieByIdAndSimilarGenresUseCase : GetMovieByIdAndSimilarGenresUseC
                     releaseState = "",
                     stars = "",
                     title = "",
-                    year = ""
-                )
+                    year = "",
+                ),
             )
         }
         return list
     }
-
-
 }

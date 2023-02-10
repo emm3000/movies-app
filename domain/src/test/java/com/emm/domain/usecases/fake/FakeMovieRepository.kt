@@ -1,7 +1,6 @@
 package com.emm.domain.usecases.fake
 
 import com.emm.core.Result
-import com.emm.core.Result.*
 import com.emm.domain.entities.MovieModel
 import com.emm.domain.entities.MovieWithSimilarGenresModel
 import com.emm.domain.repository.MovieRepository
@@ -19,20 +18,21 @@ class FakeMovieRepository : MovieRepository {
     }
 
     override fun loadMoviesList(): Flow<SuccessResultList> {
-        return flowOf(Success(movieList))
+        return flowOf(Result.Success(movieList))
     }
 
     override fun getMovieByIdWithSimilarGenres(movieId: String): Flow<Result<MovieWithSimilarGenresModel>> {
-        return flowOf(movieList.firstOrNull { it.id == movieId }?.let {
-            Success(
-                MovieWithSimilarGenresModel(
-                    movie = it,
-                    similarGenres = emptyList()
+        return flowOf(
+            movieList.firstOrNull { it.id == movieId }?.let {
+                Result.Success(
+                    MovieWithSimilarGenresModel(
+                        movie = it,
+                        similarGenres = emptyList(),
+                    ),
                 )
-            )
-        } ?: run {
-            Error()
-        })
+            } ?: run {
+                Result.Error()
+            },
+        )
     }
-
 }

@@ -9,12 +9,12 @@ import com.emm.moviesapp.databinding.ItemMovieBinding
 import com.emm.moviesapp.model.MovieUI
 
 class MovieItemAdapter(
-    private val onItemClick: (MovieUI) -> Unit
+    private val onItemClick: (MovieUI) -> Unit,
 ) : ListAdapter<MovieUI, MovieItemAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false),
         )
     }
 
@@ -24,7 +24,7 @@ class MovieItemAdapter(
     }
 
     inner class ViewHolder(
-        private val binding: ItemMovieBinding
+        private val binding: ItemMovieBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: MovieUI) = with(binding) {
             this.movie = movie

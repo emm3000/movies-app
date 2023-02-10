@@ -7,11 +7,10 @@ import com.emm.data.utils.safeApiCall
 import javax.inject.Inject
 
 class RemoteMovieDataSourceImpl @Inject constructor(
-    private val apiClient: ApiClient
+    private val apiClient: ApiClient,
 ) : RemoteMovieDataSource {
 
     override suspend fun getMoviesList(): Result<MoviesResponse> {
         return safeApiCall { apiClient.getMoviesList() }
     }
-
 }

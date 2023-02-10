@@ -44,7 +44,7 @@ class MoviesListViewModelTest {
 
         val viewModel = MoviesListViewModel(
             getMoviesListUseCase = getMoviesListUseCase,
-            movieUIMapper = movieUIMapper
+            movieUIMapper = movieUIMapper,
         )
 
         assertThat(viewModel.viewState.value.isLoading).isFalse()
@@ -52,7 +52,6 @@ class MoviesListViewModelTest {
         delay(1L)
 
         assertThat(viewModel.viewState.value.moviesList.size).isEqualTo(generateFakeData().size)
-
     }
 
     private fun generateFakeData(): List<MovieModel> {
@@ -70,8 +69,8 @@ class MoviesListViewModelTest {
                     releaseState = "",
                     stars = "",
                     title = "",
-                    year = ""
-                )
+                    year = "",
+                ),
             )
         }
         return list

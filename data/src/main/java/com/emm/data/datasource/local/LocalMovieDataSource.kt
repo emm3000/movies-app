@@ -9,5 +9,4 @@ interface LocalMovieDataSource {
     suspend fun getMovieById(id: String): MovieEntity?
 
     suspend fun insertMovies(movies: List<MovieEntity>)
-
 }

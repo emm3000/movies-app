@@ -12,5 +12,3 @@ val fontFamily = FontFamily(
     Font(R.font.lato_bold, FontWeight.Bold),
     Font(R.font.lato_regular, FontWeight.Normal),
 )
-
-

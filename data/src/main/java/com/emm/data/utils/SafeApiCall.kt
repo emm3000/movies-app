@@ -19,6 +19,7 @@ suspend inline fun <T> safeApiCall(
                 Result.Error(Failure.NetworkError(message = "HttpException, -> message"))
             }
         } catch (e: Exception) {
+            e.printStackTrace()
             Result.Error(Failure.None)
         }
     }

@@ -18,5 +18,4 @@ abstract class DataSourceModule {
 
     @Binds
     abstract fun bindLocalMovieDataSource(localMovieDataSourceImpl: LocalMovieDataSourceImpl): LocalMovieDataSource
-
 }

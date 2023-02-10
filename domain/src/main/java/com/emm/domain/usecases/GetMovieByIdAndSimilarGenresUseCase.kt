@@ -7,5 +7,4 @@ import kotlinx.coroutines.flow.Flow
 interface GetMovieByIdAndSimilarGenresUseCase {
 
     operator fun invoke(movieID: String): Flow<Result<MovieWithSimilarGenresModel>>
-
 }

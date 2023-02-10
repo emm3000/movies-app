@@ -12,6 +12,7 @@ suspend inline fun <T> safeDataBaseOperations(
         try {
             dbOperation()
         } catch (e: Exception) {
+            e.printStackTrace()
             defaultValue
         }
     }

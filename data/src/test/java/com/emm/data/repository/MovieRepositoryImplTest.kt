@@ -1,6 +1,6 @@
 package com.emm.data.repository
 
-import com.emm.core.Result.*
+import com.emm.core.Result
 import com.emm.data.api.response.MovieResponse
 import com.emm.data.api.response.MoviesResponse
 import com.emm.data.datasource.local.LocalMovieDataSource
@@ -35,13 +35,13 @@ class MovieRepositoryImplTest {
         movieRepositoryImpl = MovieRepositoryImpl(
             movieDataSource = remoteMovieDataSource,
             localMovieDataSource = localMovieDataSource,
-            movieDataMapper = MovieDataMapperImpl()
+            movieDataMapper = MovieDataMapperImpl(),
         )
     }
 
     @Test
     fun `Verify that the api call is not made if movies exist in the database`() = runTest {
-        coEvery { remoteMovieDataSource.getMoviesList() } returns Success(fakeMovieResponse())
+        coEvery { remoteMovieDataSource.getMoviesList() } returns Result.Success(fakeMovieResponse())
         coEvery { localMovieDataSource.getMoviesList() } returns fakeMovieEntityList()
 
         movieRepositoryImpl.loadMoviesList().first()
@@ -52,7 +52,7 @@ class MovieRepositoryImplTest {
 
     @Test
     fun `Verify insertion and call to movie api when database is empty`() = runTest {
-        coEvery { remoteMovieDataSource.getMoviesList() } returns Success(fakeMovieResponse())
+        coEvery { remoteMovieDataSource.getMoviesList() } returns Result.Success(fakeMovieResponse())
         coEvery { localMovieDataSource.getMoviesList() } returns emptyList()
 
         movieRepositoryImpl.loadMoviesList().first()
@@ -80,14 +80,14 @@ class MovieRepositoryImplTest {
 
         val movieWithSimilarGenresModelResult = movieRepositoryImpl.getMovieByIdWithSimilarGenres(movieID).first()
 
-        assertThat((movieWithSimilarGenresModelResult as Success).data.similarGenres).isNotEmpty()
+        assertThat((movieWithSimilarGenresModelResult as Result.Success).data.similarGenres).isNotEmpty()
     }
 
     companion object {
         fun fakeMovieResponse(): MoviesResponse {
             return MoviesResponse(
                 errorMessage = "",
-                items = fakeMovieResponseList()
+                items = fakeMovieResponseList(),
             )
         }
 
@@ -104,7 +104,7 @@ class MovieRepositoryImplTest {
                     releaseState = "",
                     stars = "",
                     title = "",
-                    year = ""
+                    year = "",
                 )
             }
         }
@@ -122,7 +122,7 @@ class MovieRepositoryImplTest {
                     releaseState = "",
                     stars = "",
                     title = "",
-                    year = ""
+                    year = "",
                 )
             }
         }
@@ -139,11 +139,8 @@ class MovieRepositoryImplTest {
                 releaseState = "",
                 stars = "",
                 title = "",
-                year = ""
+                year = "",
             )
         }
-
-
     }
-
 }

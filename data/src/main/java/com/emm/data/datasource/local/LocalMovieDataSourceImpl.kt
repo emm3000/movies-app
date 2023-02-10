@@ -6,7 +6,7 @@ import com.emm.data.utils.safeDataBaseOperations
 import javax.inject.Inject
 
 class LocalMovieDataSourceImpl @Inject constructor(
-    private val movieDao: MovieDao
+    private val movieDao: MovieDao,
 ) : LocalMovieDataSource {
 
     override suspend fun getMoviesList(): List<MovieEntity> {
@@ -26,5 +26,4 @@ class LocalMovieDataSourceImpl @Inject constructor(
             movieDao.insertMovies(movies)
         }
     }
-
 }

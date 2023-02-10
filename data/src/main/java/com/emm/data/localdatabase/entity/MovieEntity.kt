@@ -15,5 +15,5 @@ data class MovieEntity(
     val releaseState: String,
     val stars: String,
     val title: String,
-    val year: String
+    val year: String,
 )

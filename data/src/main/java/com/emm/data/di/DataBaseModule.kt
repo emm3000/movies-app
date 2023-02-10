@@ -17,12 +17,12 @@ object DataBaseModule {
     @Provides
     @Singleton
     fun provideAppDataBase(
-        application: Application
+        application: Application,
     ): MoviesDataBase {
         return Room.databaseBuilder(
             application,
             MoviesDataBase::class.java,
-            "Movie.db"
+            "Movie.db",
         ).build()
     }
 
@@ -31,5 +31,4 @@ object DataBaseModule {
     fun provideMoviesDao(moviesDatabase: MoviesDataBase): MovieDao {
         return moviesDatabase.movieDao()
     }
-
 }

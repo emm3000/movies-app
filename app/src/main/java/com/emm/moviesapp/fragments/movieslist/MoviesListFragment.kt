@@ -35,7 +35,12 @@ class MoviesListFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    // format x d w q x w w D s s s a d d
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentMoviesListBinding.inflate(inflater, container, false)
         binding.moviesListViewModel = viewModel
@@ -82,14 +87,12 @@ class MoviesListFragment : Fragment() {
         if (permissionToRequest.isNotEmpty()) {
             requestPermission.launch(permissionToRequest.toTypedArray())
         }
-
     }
 
     private fun checkSelfPermission(permission: String): Boolean {
         return ContextCompat.checkSelfPermission(
             requireContext(),
-            permission
+            permission,
         ) == PackageManager.PERMISSION_GRANTED
     }
-
 }

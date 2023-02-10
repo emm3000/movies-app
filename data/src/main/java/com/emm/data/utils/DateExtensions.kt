@@ -10,7 +10,8 @@ const val RELEASE_STATE_PATTERN = "dd MMM yyyy"
 fun String.toLocalDate(): LocalDate? {
     return try {
         val dtf = DateTimeFormatter.ofPattern(
-            RELEASE_STATE_PATTERN, Locale.ENGLISH
+            RELEASE_STATE_PATTERN,
+            Locale.ENGLISH,
         )
 
         LocalDate.parse(this, dtf)

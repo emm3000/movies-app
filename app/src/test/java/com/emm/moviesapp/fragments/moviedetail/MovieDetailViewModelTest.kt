@@ -46,7 +46,7 @@ class MovieDetailViewModelTest {
         val viewModel = MovieDetailViewModel(
             getMovieByIdAndSimilarGenresUseCase = fakeRepository,
             movieUIMapper = movieUIMapper,
-            savedStateHandle = savedStateHandle
+            savedStateHandle = savedStateHandle,
         )
 
         delay(1L)
@@ -54,12 +54,10 @@ class MovieDetailViewModelTest {
         fakeRepository.emit(movieID)
 
         assertThat(viewModel.viewState.value.currentMovie?.id).isEqualTo(movieID)
-
     }
 
     @After
     fun tearDown() {
         Dispatchers.resetMain()
     }
-
 }

@@ -6,5 +6,4 @@ import com.emm.moviesapp.model.MovieUI
 interface MovieUIMapper {
 
     fun mapMovieListDomainToUI(movieModel: MovieModel): MovieUI
-
 }

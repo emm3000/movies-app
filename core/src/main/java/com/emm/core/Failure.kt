@@ -21,5 +21,4 @@ sealed class Failure(
     ) : Failure(message, error)
 
     object None : Failure(message = "")
-
 }

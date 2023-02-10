@@ -7,12 +7,14 @@ import coil.load
 import com.emm.moviesapp.adapters.MovieItemAdapter
 import com.emm.moviesapp.model.MovieUI
 
+const val CROSS_FADE_DURATION = 1000
+
 @BindingAdapter("app:url")
 fun setImageUrl(view: ImageView, url: String?) {
     url?.let {
         view.load(it) {
             crossfade(true)
-            crossfade(1000)
+            crossfade(CROSS_FADE_DURATION)
         }
     }
 }

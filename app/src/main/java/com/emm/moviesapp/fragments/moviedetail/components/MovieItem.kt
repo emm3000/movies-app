@@ -28,7 +28,7 @@ import com.emm.moviesapp.model.MovieUI
 fun MovieItem(movie: MovieUI) {
     Column(
         modifier = Modifier.width(150.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         CoilImage(urlImg = movie.image, debugPreview = R.drawable.test_img)
         Spacer(modifier = Modifier.height(3.dp))
@@ -44,7 +44,7 @@ fun MovieItem(movie: MovieUI) {
             modifier = Modifier
                 .fillMaxWidth()
                 .heightIn(40.dp)
-                .padding(horizontal = 10.dp)
+                .padding(horizontal = 10.dp),
         )
     }
 }
@@ -65,8 +65,8 @@ fun DetailScreenPreview() {
                 releaseState = "xx xx xx",
                 stars = "",
                 title = "Title Movie",
-                year = ""
-            )
+                year = "",
+            ),
         )
     }
 }

@@ -44,5 +44,4 @@ object NetworkModule {
     fun provideApi(retrofit: Retrofit): ApiClient {
         return retrofit.create(ApiClient::class.java)
     }
-
 }

@@ -6,5 +6,4 @@ import com.emm.data.api.response.MoviesResponse
 interface RemoteMovieDataSource {
 
     suspend fun getMoviesList(): Result<MoviesResponse>
-
 }

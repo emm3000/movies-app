@@ -19,7 +19,7 @@ class MovieDataMapperImpl @Inject constructor() : MovieDataMapper {
             releaseState = movieResponse.releaseState,
             stars = movieResponse.stars,
             title = movieResponse.title,
-            year = movieResponse.year
+            year = movieResponse.year,
         )
     }
 
@@ -35,7 +35,7 @@ class MovieDataMapperImpl @Inject constructor() : MovieDataMapper {
             releaseState = movieEntity.releaseState,
             stars = movieEntity.stars,
             title = movieEntity.title,
-            year = movieEntity.year
+            year = movieEntity.year,
         )
     }
 
@@ -51,7 +51,7 @@ class MovieDataMapperImpl @Inject constructor() : MovieDataMapper {
             releaseState = movieResponse.releaseState,
             stars = movieResponse.stars,
             title = movieResponse.title,
-            year = movieResponse.year
+            year = movieResponse.year,
         )
     }
 }

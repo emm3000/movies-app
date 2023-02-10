@@ -25,11 +25,10 @@ class MovieDetailFragment : Fragment() {
                 MovieDetailTheme {
                     MovieDetailScreen(
                         viewModel = viewModel,
-                        onBackButtonAction = { findNavController().popBackStack() }
+                        onBackButtonAction = { findNavController().popBackStack() },
                     )
                 }
             }
         }
     }
-
 }

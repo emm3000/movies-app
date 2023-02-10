@@ -11,7 +11,6 @@ import com.emm.data.utils.releaseStateToEpochMillis
 import com.emm.domain.entities.MovieModel
 import com.emm.domain.entities.MovieWithSimilarGenresModel
 import com.emm.domain.repository.MovieRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -19,7 +18,7 @@ import javax.inject.Inject
 class MovieRepositoryImpl @Inject constructor(
     private val movieDataSource: RemoteMovieDataSource,
     private val localMovieDataSource: LocalMovieDataSource,
-    private val movieDataMapper: MovieDataMapper
+    private val movieDataMapper: MovieDataMapper,
 ) : MovieRepository {
 
     override fun loadMoviesList(): Flow<Result<List<MovieModel>>> = flow {
@@ -29,12 +28,11 @@ class MovieRepositoryImpl @Inject constructor(
             when (val fetchMovies = movieDataSource.getMoviesList()) {
                 is Result.Error -> emit(Result.Error(fetchMovies.failure))
                 is Result.Success -> {
-
                     val sortedMoviesByReleaseState = fetchMovies.data.items
                         .sortedByDescending { it.releaseState.releaseStateToEpochMillis() }
 
                     localMovieDataSource.insertMovies(
-                        movies = sortedMoviesByReleaseState.map(movieDataMapper::mapMovieListResponseToEntity)
+                        movies = sortedMoviesByReleaseState.map(movieDataMapper::mapMovieListResponseToEntity),
                     )
 
                     val resultToDomain: Result<List<MovieModel>> = fetchMovies.mapper {
@@ -46,11 +44,10 @@ class MovieRepositoryImpl @Inject constructor(
         } else {
             emit(Result.Success(movies.map(movieDataMapper::mapMoviesListEntityToDomainModel)))
         }
-
     }
 
     override fun getMovieByIdWithSimilarGenres(movieId: String): Flow<Result<MovieWithSimilarGenresModel>> = flow {
-        delay(400L) // To test Loading in [MovieDetailScreen.kt]
+        // delay(400L) // To test Loading in [MovieDetailScreen.kt]
 
         val searchedMovie: MovieEntity? = localMovieDataSource.getMovieById(movieId)
         if (searchedMovie != null) {
@@ -62,8 +59,8 @@ class MovieRepositoryImpl @Inject constructor(
                     MovieWithSimilarGenresModel(
                         movie = movieDataMapper.mapMoviesListEntityToDomainModel(searchedMovie),
                         similarGenres = similarGenresMovies.map(movieDataMapper::mapMoviesListEntityToDomainModel),
-                    )
-                )
+                    ),
+                ),
             )
         } else {
             emit(Result.Error(Failure.LocalDataBaseError("No entity")))
@@ -84,5 +81,4 @@ class MovieRepositoryImpl @Inject constructor(
 
         return moviesWithSimilarGenres
     }
-
 }

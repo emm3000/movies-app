@@ -15,12 +15,11 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun bindGetMovieListUseCase(
-        prodGetMoviesListUseCase: ProdGetMoviesListUseCase
+        prodGetMoviesListUseCase: ProdGetMoviesListUseCase,
     ): GetMoviesListUseCase
 
     @Binds
     abstract fun bindGetMovieByIdUseCase(
-        prodGetMovieByIdUseCase: ProdGetMovieByIdAndSimilarGenresUseCase
+        prodGetMovieByIdUseCase: ProdGetMovieByIdAndSimilarGenresUseCase,
     ): GetMovieByIdAndSimilarGenresUseCase
-
 }
