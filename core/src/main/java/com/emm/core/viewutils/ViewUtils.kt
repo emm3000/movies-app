@@ -1,8 +1,6 @@
 package com.emm.core.viewutils
 
-class ViewUtils {
-
-    companion object {
-        const val BUTTON = "BUTTON"
-    }
+object ViewUtils {
+    const val BUTTON = "BUTTON"
+    const val TEXT = "TEXT"
 }
