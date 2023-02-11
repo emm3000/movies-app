@@ -20,7 +20,7 @@ jobs:
 
       - name: Apk name
         id: apk
-        uses: emm300/apk-name-action@v1.0
+        uses: emm3000/apk-name-action@v1.0
         with:
           pull-request-name: ${{ github.event.pull_request.title }}
 
