@@ -18,9 +18,15 @@ jobs:
       - name: Build Project
         run: ./gradlew assemble
 
+      - name: Apk name
+        id: apk
+        uses: emm300/apk-name-action@v1.0
+        with:
+          pull-request-name: ${{ github.event.pull_request.title }}
+
       - uses: actions/upload-artifact@v3
         with:
-          name: ${{ github.head_ref }}.apk
+          name: ${{ steps.apk.outputs.apk-name }}.apk
           path: ./app/build/outputs/apk/debug
 #
 #      - name: Run Tests
