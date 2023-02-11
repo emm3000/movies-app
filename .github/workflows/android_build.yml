@@ -20,13 +20,13 @@ jobs:
 
       - name: Apk name
         id: apk
-        uses: emm3000/apk-name-action@v1.2
+        uses: emm3000/apk-name-action@v1.3
         with:
           pull-request-name: ${{ github.event.pull_request.title }}
 
       - uses: actions/upload-artifact@v3
         with:
-          name: ${{ steps.apk.outputs.apk-name }}.apk
+          name: ${{ steps.apk.outputs.apk-name }}
           path: ./app/build/outputs/apk/debug
 #
 #      - name: Run Tests
