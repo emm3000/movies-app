@@ -17,6 +17,11 @@ jobs:
 
       - name: Build Project
         run: ./gradlew assemble
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.ref_name }}.apk
+          path: ./app/build/outputs/apk/debug
 #
 #      - name: Run Tests
 #        run: ./gradlew test
